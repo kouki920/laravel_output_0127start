@@ -18,6 +18,7 @@ class CreteBooksTable extends Migration
             $table->string('title',255);
             $table->string('author',100);
             $table->integer('price');
+            $table->string('comment',200);
             $table->timestamps();
         });
     }

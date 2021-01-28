@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameAuthorNameBooksTable extends Migration
+class ChangeCommentBooks extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class RenameAuthorNameBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->renameColumn('author','name');
+            $table->text('comment')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class RenameAuthorNameBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->removeColumn('name','author');
+            //
         });
     }
 }
