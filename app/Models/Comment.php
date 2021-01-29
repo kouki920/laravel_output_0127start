@@ -14,4 +14,8 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\Post');
     }
+
+    protected $dates = [
+        'created_at'
+    ];
 }

@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+use App\Http\Controllers\BoardsController;
+use Illuminate\Support\Facades\Route;//変更箇所
+
+
+
+Route::group(['prefix'=>'board','middleware'=>'auth'],function(){
+    Route::get('index','BoardsController@index')->name('board.index');
+    Route::get('create','BoardsController@create')->name('board.create');
+    Route::post('store','BoardsController@store')->name('board.store');
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
