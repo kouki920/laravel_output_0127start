@@ -24,6 +24,7 @@ Route::group(['prefix'=>'board','middleware'=>'auth'],function(){
     Route::get('show/{id}','BoardsController@show')->name('board.show');
     Route::get('edit/{id}','BoardsController@edit')->name('board.edit');
     Route::post('update/{id}','BoardsController@update')->name('board.update');
+    Route::post('destroy/{id}','BoardsController@destroy')->name('board.destroy');
 });
 
 Route::group(['prefix'=>'comment','middleware'=>'auth'],function (){

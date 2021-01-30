@@ -21,7 +21,7 @@ class BoardsController extends Controller
         // $posts = DB::table('posts')->select('title','body','created_at','comments')->get();
 
 
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         //dbファサード使ってない
 
 
@@ -110,6 +110,13 @@ class BoardsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        DB::transaction(function () use ($post){
+            $post->comments()->delete();
+            $post->delete();
+        });
+        return redirect('board/index');
+
     }
 }

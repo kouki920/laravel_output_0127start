@@ -12,6 +12,13 @@
     </a>
 </div>
 
+<form action="{{ route('board.destroy', ['id' => $post->id]) }}" method="POST" >
+@csrf
+<div class="mb-4 text-right">
+<button class="btn btn-danger">削除する</button>
+</div>
+</form>
+
 <div class="card mb-4">
                 <div class="card-header">
                     タイトル: {{ $post->title }}
@@ -21,16 +28,17 @@
                         {!! nl2br(e(Str::limit($post->body, 140))) !!}
                         <!-- 文字数表示制限 -->
                     </p>
-</div>
-<div class="card-footer">
                     <span class="mr-2">
                     投稿日時 {{ $post->created_at->format('Y.m.d H:i') }}
                     </span>
+</div>
+<div class="card-footer">
+
                     <section>
                     <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
     @csrf
 
-    <input　
+    <input
         name="post_id"
         type="hidden"
         value="{{ $post->id }}"
@@ -38,7 +46,7 @@
 
     <div class="form-group">
         <label for="body">
-            本文
+            {{$post->title}}にコメント
         </label>
 
         <textarea
