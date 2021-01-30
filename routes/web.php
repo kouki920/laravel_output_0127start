@@ -20,6 +20,7 @@ Route::group(['prefix'=>'board','middleware'=>'auth'],function(){
     Route::get('index','BoardsController@index')->name('board.index');
     Route::get('create','BoardsController@create')->name('board.create');
     Route::post('store','BoardsController@store')->name('board.store');
+    Route::get('show/{id}','BoardsController@show')->name('board.show');
 });
 
 

@@ -7,19 +7,14 @@
 
 <div class="container mt-4">
 
-<div class="mb-4">
-<a href="{{route('board.create')}}" class="btn btn-primary">投稿</a>
-</div>
-
-@foreach($posts as $post)
 
 <div class="card mb-4">
                 <div class="card-header">
-                タイトル: {{ $post->title }}
+                    タイトル: {{ $post->title }}
                 </div>
                 <div class="card-body">
                 <p class="card-text">
-                        1コメ: {!! nl2br(e(Str::limit($post->body, 140))) !!}
+                        {!! nl2br(e(Str::limit($post->body, 140))) !!}
                         <!-- 文字数表示制限 -->
                     </p>
 </div>
@@ -33,10 +28,7 @@
                         </span>
                     @endif
 </div>
-<div class="mb-4">
-<a href="{{route('board.show',['id' => $post->id])}}" class="btn btn-primary">詳細へ</a>
 </div>
-</div>
-@endforeach
+
 </div>
 @endsection
