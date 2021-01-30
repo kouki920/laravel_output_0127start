@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\BoardsController;
+use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;//変更箇所
 
 
@@ -21,6 +22,11 @@ Route::group(['prefix'=>'board','middleware'=>'auth'],function(){
     Route::get('create','BoardsController@create')->name('board.create');
     Route::post('store','BoardsController@store')->name('board.store');
     Route::get('show/{id}','BoardsController@show')->name('board.show');
+});
+
+Route::group(['prefix'=>'comment','middleware'=>'auth'],function (){
+    Route::post('store',"CommentsController@store")->name('comment.store');
+
 });
 
 
