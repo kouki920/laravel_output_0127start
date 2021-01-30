@@ -6,7 +6,11 @@
 
 
 <div class="container mt-4">
-
+<div class="mb-4 text-right">
+    <a class="btn btn-primary" href="{{ route('board.edit', ['id' => $post->id]) }}">
+        編集する
+    </a>
+</div>
 
 <div class="card mb-4">
                 <div class="card-header">
@@ -26,7 +30,7 @@
                     <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
     @csrf
 
-    <input
+    <input　
         name="post_id"
         type="hidden"
         value="{{ $post->id }}"
@@ -60,6 +64,8 @@
                 <h2 class="h5 mt-2 mb-2">
                     コメント
                 </h2>
+
+
                 @forelse($post->comments as $comment)
                     <div class="border-top p-4">
                         <time class="text-secondary">

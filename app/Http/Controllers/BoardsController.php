@@ -77,7 +77,9 @@ class BoardsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit' ,compact('post'));
     }
 
     /**
@@ -89,7 +91,15 @@ class BoardsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $params = $request->validate([
+            'title' => 'required|max:50',
+            'body' => 'required|max:200',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->fill($params)->save();
+
+        return redirect('board/index');
     }
 
     /**
