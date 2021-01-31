@@ -32,6 +32,23 @@
                     タイトル:<br>
                     <input type="text" name="title">
                     <br>
+                    <div class="form-group">
+                    <label for="subject">
+                        カテゴリー
+                    </label>
+                    <input
+                        id="category_id"
+                        name="category_id"
+                        class="form-control {{ $errors->has('category_id') ? 'is-invalid' : '' }}"
+                        value="{{ old('category_id') }}"
+                        type="text"
+                    >
+                    @if ($errors->has('category_id'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('category_id') }}
+                        </div>
+                    @endif
+                </div>
                     本文:<br>
                     <textarea name="body" cols="30" rows="5"></textarea>
 

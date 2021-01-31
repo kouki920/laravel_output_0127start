@@ -35,6 +35,17 @@
                     <br>
                     1コメ:<br>
                     <textarea name="body" cols="30" rows="5">{{$post->comments()->body}}</textarea>
+
+<!--
+                        カテゴリー
+
+                    <input
+                        type="text"
+                        name="category_id"
+                        value="{{ old('category_id') ?: $post->category_id }}"
+                        > -->
+
+
                     <br>
                     <input class="btn btn-info" type="submit" value="更新">
                     <div class="mt-2">

@@ -33,6 +33,15 @@
                     タイトル:<br>
                     <input type="text" name="title" value="{{$post->title}}">
                     <br>
+
+
+                    カテゴリー:<br>
+
+<input
+    type="text"
+    name="category_id"
+    value="{{ old('category_id') ?: $post->category_id }}"
+    ><br>
                     1コメ:<br>
                     <textarea name="body" cols="30" rows="5">{{$post->body}}</textarea>
                     <br>

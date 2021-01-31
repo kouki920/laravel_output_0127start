@@ -148,6 +148,7 @@ return [
     'attributes' => [
         'title' => 'タイトル',//追記
         'body' => '本文',
+        'category_id' => 'カテゴリー',
     ],
 
 ];

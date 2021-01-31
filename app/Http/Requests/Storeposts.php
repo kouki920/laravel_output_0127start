@@ -26,6 +26,7 @@ class Storeposts extends FormRequest
         return [
             'title' => 'required|string|max:50',
             'body' => 'required|string|max:200',
+            'category_id' => 'required|integer',
         ];
     }
 }

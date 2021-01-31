@@ -22,6 +22,7 @@
 <div class="card mb-4">
                 <div class="card-header">
                     タイトル: {{ $post->title }}
+                    カテゴリ:{{$post->category->name}}
                 </div>
                 <div class="card-body">
                 <p class="card-text">
