@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Http\Requests\Storeposts;
 
 class BoardsController extends Controller
 {
@@ -44,15 +45,9 @@ class BoardsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Storeposts $request)
     {
-
-        $params = $request->validate([
-            'title' => 'required|max:50',
-            'body' => 'required|max:200',
-        ]);
-
-        Post::create($params);
+        Post::create($request);
 
         return redirect('board/index');
     }
@@ -89,15 +84,11 @@ class BoardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Storeposts $request, $id)
     {
-        $params = $request->validate([
-            'title' => 'required|max:50',
-            'body' => 'required|max:200',
-        ]);
 
         $post = Post::findOrFail($id);
-        $post->fill($params)->save();
+        $post->fill($request)->save();
 
         return redirect('board/index');
     }

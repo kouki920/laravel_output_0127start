@@ -34,6 +34,7 @@
                     <br>
                     本文:<br>
                     <textarea name="body" cols="30" rows="5"></textarea>
+
                     <br>
                     <input class="btn btn-info" type="submit" value="投稿">
 
