@@ -11,6 +11,7 @@ class Post extends Model
         'title',
         'body',
         'created_at',
+        'updated_at',
     ];
 
     public function comments()

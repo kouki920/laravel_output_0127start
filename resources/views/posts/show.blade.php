@@ -8,14 +8,14 @@
 <div class="container mt-4">
 <div class="mb-4 text-right">
     <a class="btn btn-primary" href="{{ route('board.edit', ['id' => $post->id]) }}">
-        編集する
+        編集
     </a>
 </div>
 
 <form action="{{ route('board.destroy', ['id' => $post->id]) }}" method="POST" >
 @csrf
 <div class="mb-4 text-right">
-<button class="btn btn-danger">削除する</button>
+<button class="btn btn-danger">削除</button>
 </div>
 </form>
 
@@ -62,11 +62,18 @@
         @endif
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4 text-left" >
         <button type="submit" class="btn btn-primary">
-            コメントする
+            コメント
         </button>
     </div>
+</form>
+<form action="{{ route('comment.destroy', ['id' => $post->id]) }}" method="POST" >
+@csrf
+
+<div class="mt-4 text-right">
+<button class="btn btn-danger">全削除</button>
+</div>
 </form>
 
                 <h2 class="h5 mt-2 mb-2">
@@ -83,8 +90,10 @@
                             {!! nl2br(e($comment->body)) !!}
                         </p>
                     </div>
+
                 @empty
                     <p>コメントはまだありません。</p>
+
                 @endforelse
             </section>
 
