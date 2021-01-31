@@ -60,7 +60,7 @@ class BoardsController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('posts.show',compact('post'));
     }
 
@@ -87,8 +87,9 @@ class BoardsController extends Controller
     public function update( Storeposts $request, $id)
     {
 
-        $post = Post::findOrFail($id);
-        $post->fill($request)->save();
+        $post = Post::findOrFail($request->id);
+
+        $post->fill($request->all())->save();
 
         return redirect('board/index');
     }
