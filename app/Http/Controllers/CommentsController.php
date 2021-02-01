@@ -13,18 +13,12 @@ class CommentsController extends Controller
     public function store(CommentRequest $request)
 
     {
-
         $params = $request->validated();
 
         $post = Post::findOrFail($params['post_id']);
 
 
         $post->comments()->create($params);
-
-        // $post = Post::findOrFail($request['post_id']);
-
-        // $post->comments()->create($request);
-
 
         return redirect()->route('board.show',['id' => $post->id]);
     }

@@ -24,16 +24,17 @@ class BoardsController extends Controller
 
         $category = new Category();
         $categories = $category->getLists();
+        $searchword = $request->searchword;
 
         $category_id = $request->category_id;
 
-        $posts = Post::orderBy('created_at', 'desc')->categoryId($category_id)->paginate(10);
+        $posts = Post::with(['comments','category'])->orderBy('created_at', 'desc')->categoryId($category_id)->searchWords($searchword)->paginate(10);
 
 
 
 
 
-        return view('posts.index',compact('posts','categories','category_id'));
+        return view('posts.index',compact('posts','categories','category_id','searchword'));
     }
 
     /**

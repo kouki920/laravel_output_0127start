@@ -11,6 +11,16 @@
 <a href="{{route('board.create')}}" class="btn btn-primary">投稿</a>
 </div>
 
+<!-- 検索フォーム -->
+<div class="mt-4 mb-4">
+    <form class="form-inline" method="GET" action="{{ route('board.index') }}">
+        <div class="form-group">
+            <input type="text" name="searchword" value="{{$searchword}}" class="form-control" placeholder="ワード検索">
+        </div>
+        <input type="submit" value="検索" class="btn btn-info ml-2">
+    </form>
+</div>
+
 <div class="mt-4 mb-4">
     <p>{{ $posts->total() }}件が見つかりました。</p>
 </div>
@@ -26,8 +36,8 @@
 
 <div class="card mb-4">
                 <div class="card-header">
-                タイトル: {{ $post->title }}
-                カテゴリ:{{ $post->category->name }}
+                タイトル: {{ $post->title }}&ensp;
+                カテゴリ: {{ $post->category->name }}
                 </div>
                 <div class="card-body">
                 <p class="card-text">
@@ -45,11 +55,11 @@
                         </span>
                     @endif
 </div>
-<div class="mb-4">
+<div class="mb-1">
 <a href="{{route('board.show',['id' => $post->id])}}" class="btn btn-primary">詳細へ</a>
 </div>
 </div>
 @endforeach
-{{$posts->appends(['category_id' => $category_id])->links()}}
+{{$posts->appends(['category_id' => $category_id,'searchword' => $searchword])->links()}}
 </div>
 @endsection

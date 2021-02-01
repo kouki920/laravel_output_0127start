@@ -32,4 +32,14 @@ class Post extends Model
         }
         return $query->where('category_id',$category_id);
     }
+
+    public function scopeSearchWords($query,$searchword){
+        if(empty($searchword)){
+            return;
+        }
+        return $query->where(function($query) use($searchword){
+            $query->orWhere('title','like',"%{$searchword}%")
+                ->orWhere('body','like',"%{$searchword}%");
+        });
+    }
 }
