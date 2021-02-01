@@ -10,14 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class CommentsController extends Controller
 {
-    public function store(Request $request)
+    public function store(CommentRequest $request)
 
     {
 
-        $params = $request->validate([
-        'post_id' => 'required|exists:posts,id',
-        'body' => 'required|max:200',
-        ]);
+        $params = $request->validated();
 
         $post = Post::findOrFail($params['post_id']);
 

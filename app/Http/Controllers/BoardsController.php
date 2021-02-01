@@ -57,7 +57,9 @@ class BoardsController extends Controller
      */
     public function store(Storeposts $request)
     {
-        Post::create($request);
+
+        $validated = $request->validated();
+        Post::create($validated);
 
         return redirect('board/index');
     }
