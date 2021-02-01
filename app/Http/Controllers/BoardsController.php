@@ -30,10 +30,6 @@ class BoardsController extends Controller
 
         $posts = Post::with(['comments','category'])->orderBy('created_at', 'desc')->categoryId($category_id)->searchWords($searchword)->paginate(10);
 
-
-
-
-
         return view('posts.index',compact('posts','categories','category_id','searchword'));
     }
 

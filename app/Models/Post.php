@@ -25,6 +25,7 @@ class Post extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    // カテゴリーのスコープ
     public function scopeCategoryId($query,$category_id)
     {
         if(empty($category_id)){
@@ -33,6 +34,7 @@ class Post extends Model
         return $query->where('category_id',$category_id);
     }
 
+    // ワード検索のスコープ
     public function scopeSearchWords($query,$searchword){
         if(empty($searchword)){
             return;
