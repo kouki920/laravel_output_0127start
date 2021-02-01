@@ -31,19 +31,24 @@
                     @csrf
                     <div class="card-body">
                     タイトル:<br>
-                    <input type="text" name="title" value="{{$post->title}}">
+                    <input class="form-control" type="text" name="title" value="{{$post->title}}">
                     <br>
 
-
-                    カテゴリー:<br>
-
-<input
-    type="text"
+                    <select
+    id="category_id"
     name="category_id"
-    value="{{ old('category_id') ?: $post->category_id }}"
-    ><br>
+    class="form-control {{ $errors->has('category_id') ? 'is-invalid' : '' }}"
+>
+    @foreach($categories as $id => $name)
+        <option value="{{ $id }}"
+            @if ($post->category_id == $id)
+                selected
+            @endif
+        >{{ $name }}</option>
+    @endforeach
+</select>
                     1コメ:<br>
-                    <textarea name="body" cols="30" rows="5">{{$post->body}}</textarea>
+                    <textarea class="form-control" name="body" cols="30" rows="5">{{$post->body}}</textarea>
                     <br>
                     <input class="btn btn-info" type="submit" value="更新">
                     <div class="mt-2">

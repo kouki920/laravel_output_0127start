@@ -18,16 +18,22 @@ class BoardsController extends Controller
      */
 
 
-    public function index()
+    public function index(Request $request)
     {
         // $posts = DB::table('posts')->select('title','body','created_at','comments')->get();
 
+        $category = new Category();
+        $categories = $category->getLists();
 
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        //dbファサード使ってない
+        $category_id = $request->category_id;
+
+        $posts = Post::orderBy('created_at', 'desc')->categoryId($category_id)->paginate(10);
 
 
-        return view('posts.index',compact('posts'));
+
+
+
+        return view('posts.index',compact('posts','categories','category_id'));
     }
 
     /**
@@ -37,7 +43,10 @@ class BoardsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $category = new Category();
+       $categories = $category->getLists()->prepend('選択','');
+
+        return view('posts.create',compact('categories'));
     }
 
     /**
@@ -73,9 +82,12 @@ class BoardsController extends Controller
      */
     public function edit($id)
     {
+        $category = new Category();
+        $categories = $category->getLists()->prepend('選択','');
+
         $post = Post::findOrFail($id);
 
-        return view('posts.edit' ,compact('post'));
+        return view('posts.edit' ,compact('post','categories'));
     }
 
     /**

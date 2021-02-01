@@ -24,4 +24,12 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function scopeCategoryId($query,$category_id)
+    {
+        if(empty($category_id)){
+            return;
+        }
+        return $query->where('category_id',$category_id);
+    }
 }

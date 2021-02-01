@@ -30,19 +30,22 @@
                     <form action="{{route('board.store')}}" method="POST">
                     @csrf
                     タイトル:<br>
-                    <input type="text" name="title">
+                    <input class="form-control" type="text" name="title">
                     <br>
                     <div class="form-group">
                     <label for="subject">
                         カテゴリー
                     </label>
-                    <input
-                        id="category_id"
-                        name="category_id"
-                        class="form-control {{ $errors->has('category_id') ? 'is-invalid' : '' }}"
-                        value="{{ old('category_id') }}"
-                        type="text"
-                    >
+                    <select
+    id="category_id"
+    name="category_id"
+    class="form-control {{ $errors->has('category_id') ? 'is-invalid' : '' }}"
+    value="{{ old('category_id') }}"
+>
+    @foreach($categories as $id => $name)
+        <option value="{{ $id }}">{{ $name }}</option>
+    @endforeach
+</select>
                     @if ($errors->has('category_id'))
                         <div class="invalid-feedback">
                             {{ $errors->first('category_id') }}
@@ -50,7 +53,7 @@
                     @endif
                 </div>
                     本文:<br>
-                    <textarea name="body" cols="30" rows="5"></textarea>
+                    <textarea class="form-control" name="body" cols="30" rows="5"></textarea>
 
                     <br>
                     <input class="btn btn-info" type="submit" value="投稿">

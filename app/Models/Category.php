@@ -13,6 +13,13 @@ class Category extends Model
 
     public function getLists()
     {
+        /*
+         * キーがidでバリューがnameのコレクションを生成
+         */
+        $categories = Category::orderBy('id','asc')->pluck('name', 'id');
 
+        return $categories;
     }
+
+
 }
