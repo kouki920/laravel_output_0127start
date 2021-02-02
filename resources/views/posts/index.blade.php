@@ -22,9 +22,9 @@
 </div>
 
 <div class="mt-4 mb-4">
-    <p>{{ $posts->total() }}件が見つかりました。</p>
+    <p>{{ $posts->total() }}件です。</p>
 </div>
-
+<!-- タグ別のリンク -->
 <div class="mt-4 mb-4">
     @foreach($categories as $id => $name)
     <span class="btn"><a href="{{ route('board.index', ['category_id'=>$id]) }}" title="{{ $name }}">{{ $name }}</a></span>

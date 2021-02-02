@@ -41,11 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ],
+        ]
     ],
 
     /*
@@ -70,6 +71,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -98,6 +100,6 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-    ],
 
+    ],
 ];
