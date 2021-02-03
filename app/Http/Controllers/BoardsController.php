@@ -24,6 +24,7 @@ class BoardsController extends Controller
 
         $category = new Category();
         $categories = $category->getLists();
+
         $searchword = $request->searchword;
 
         $category_id = $request->category_id;
