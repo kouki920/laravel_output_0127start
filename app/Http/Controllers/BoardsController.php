@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Requests\Storeposts;
+use Illuminate\Support\Facades\Auth;
 
 class BoardsController extends Controller
 {
@@ -124,5 +125,10 @@ class BoardsController extends Controller
         });
         return redirect('board/index');
 
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('user.login');
     }
 }

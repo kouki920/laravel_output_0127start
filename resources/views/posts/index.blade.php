@@ -11,6 +11,10 @@
 <a href="{{route('board.create')}}" class="btn btn-primary">投稿</a>
 </div>
 
+<div>
+<a href="{{ route('board.logout') }}">ログアウト</a>
+</div>
+
 <!-- 検索フォーム -->
 <div class="mt-4 mb-4">
     <form class="form-inline" method="GET" action="{{ route('board.index') }}">

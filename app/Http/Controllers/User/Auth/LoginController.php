@@ -80,4 +80,12 @@ class LoginController extends Controller
     {
         return redirect(route('user.login'));
     }
+
+    public function redirectPath()
+    {
+        return 'board/index';
+        //例）return 'costs/index';
+    }
+
+
 }
