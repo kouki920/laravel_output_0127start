@@ -3,14 +3,14 @@
 
 @section('content')
 
-
-
 <div class="container mt-4">
+
+<form action="{{ route('board.edit', ['id' => $post->id]) }}" method="GET" >
+@csrf
 <div class="mb-4 text-right">
-    <a class="btn btn-primary" href="{{ route('board.edit', ['id' => $post->id]) }}">
-        編集
-    </a>
+<button class="btn btn-primary">編集</button>
 </div>
+</form>
 
 <form action="{{ route('board.destroy', ['id' => $post->id]) }}" method="POST" >
 @csrf
@@ -69,6 +69,7 @@
         </button>
     </div>
 </form>
+
 <form action="{{ route('comment.destroy', ['id' => $post->id]) }}" method="POST" >
 @csrf
 

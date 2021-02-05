@@ -14,6 +14,7 @@
 <!-- 検索フォーム -->
 <div class="mt-4 mb-4">
     <form class="form-inline" method="GET" action="{{ route('board.index') }}">
+    @csrf
         <div class="form-group">
             <input type="text" name="searchword" value="{{$searchword}}" class="form-control" placeholder="ワード検索">
         </div>
@@ -30,6 +31,8 @@
     <span class="btn"><a href="{{ route('board.index', ['category_id'=>$id]) }}" title="{{ $name }}">{{ $name }}</a></span>
     @endforeach
 </div>
+
+<!-- 一覧 -->
 
 @foreach($posts as $post)
 
