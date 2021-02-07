@@ -31,8 +31,13 @@ Route::group(['prefix'=>'board','middleware'=>'auth'],function(){
 Route::group(['prefix'=>'comment','middleware'=>'auth'],function (){
     Route::post('store',"CommentsController@store")->name('comment.store');
     Route::post('destroy/{id}','CommentsController@destroy')->name('comment.destroy');
-
 });
+
+// Route::group(['prefix'=>'user','middleware'=>'auth'],function (){
+//     Route::get('show/{id}')
+
+// });
+
 
 
 
@@ -49,9 +54,9 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Route::middleware('auth:user')->group(function () {
 
         // TOPページ
-        // Route::resource('board/index', 'BoardsController', ['only' => 'index']);
+        Route::resource('board/index', 'BoardsController', ['only' => 'index']);
 
-        Route::resource('home', 'HomeController', ['only' => 'index']);
+        // Route::resource('home', 'HomeController', ['only' => 'index']);
 
     });
 });

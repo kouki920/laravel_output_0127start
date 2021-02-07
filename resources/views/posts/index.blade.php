@@ -11,10 +11,6 @@
 <a href="{{route('board.create')}}" class="btn btn-primary">投稿</a>
 </div>
 
-<div>
-<a href="{{ route('board.logout') }}">ログアウト</a>
-</div>
-
 <!-- 検索フォーム -->
 <div class="mt-4 mb-4">
     <form class="form-inline" method="GET" action="{{ route('board.index') }}">
@@ -44,7 +40,13 @@
 <div class="card mb-4">
                 <div class="card-header">
                 タイトル: {{ $post->title }}&ensp;
-                カテゴリ: {{ $post->category->name }}
+                カテゴリ: {{ $post->category->name }}&ensp;
+                <!-- @foreach$users as $id => $name
+                @if$post->user_id === Auth::user->id
+                投稿者: $name
+                @endif
+                @endforeach -->
+
                 </div>
                 <div class="card-body">
                 <p class="card-text">

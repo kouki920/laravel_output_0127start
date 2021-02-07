@@ -58,10 +58,10 @@
                                     <a class="dropdown-item" href="{{ route('board.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('ログアウト') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('board.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('board.logout') }}"  method="GET" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

@@ -56,6 +56,7 @@
                     <textarea class="form-control" name="body" cols="30" rows="5"></textarea>
 
                     <br>
+                    <input type="hidden" name="user_id" value="{{ $posts }}">
                     <input class="btn btn-info" type="submit" value="投稿">
 
                     </form>
